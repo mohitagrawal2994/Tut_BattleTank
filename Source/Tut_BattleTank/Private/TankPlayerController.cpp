@@ -40,4 +40,21 @@ void ATankPlayerController::AimTowardsCrossHair()
 	{
 		return;
 	}
+	FVector HitLocation;
+	if (GetSightRayHitLocation(HitLocation))
+	{
+		//UE_LOG(LogTemp, Warning, TEXT("Crosshair at %s"),*HitLocation.ToString())
+	}
+
+}
+
+bool ATankPlayerController::GetSightRayHitLocation(FVector &Hit) const
+{
+	Hit = FVector(1.0);
+	///Find The crosshair position in pixel coordinates
+	int32 ViewportSizeX, ViewportSizeY;
+	GetViewportSize(ViewportSizeX, ViewportSizeY);
+	FVector2D ScreenLocation = FVector2D(ViewportSizeX*CrossHairXLocation, ViewportSizeY*CrossHairYLocation);
+
+	return true;
 }
