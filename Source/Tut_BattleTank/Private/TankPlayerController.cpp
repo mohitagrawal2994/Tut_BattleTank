@@ -22,3 +22,22 @@ ATank* ATankPlayerController::GetControllerTank() const
 	return Cast<ATank>(GetPawn());
 }
 
+ATankPlayerController::ATankPlayerController()
+{
+	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+}
+
+void ATankPlayerController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+	AimTowardsCrossHair();
+}
+
+void ATankPlayerController::AimTowardsCrossHair()
+{
+	if(!GetControllerTank())
+	{
+		return;
+	}
+}
