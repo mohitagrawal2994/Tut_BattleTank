@@ -44,12 +44,12 @@ void ATankPlayerController::AimTowardsCrossHair()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Hit Location is : %s"),*HitLocation.ToString())
+		GetControllerTank()->AimAt(HitLocation);
 	}
 
 }
 
-bool ATankPlayerController::GetSightRayHitLocation(FVector &Hit) const
+bool ATankPlayerController::GetSightRayHitLocation(FVector &HitLocation) const
 {
 	///Find The crosshair position in pixel coordinates i.e find the aim dot location in 2d space as it can vary due to screen size
 	int32 ViewportSizeX, ViewportSizeY;
@@ -66,10 +66,10 @@ bool ATankPlayerController::GetSightRayHitLocation(FVector &Hit) const
 		FVector EndLocation = StartLocation + (WorldDirection*LineTraceRange);
 		if (GetWorld()->LineTraceSingleByChannel(HitResult, StartLocation, EndLocation, ECollisionChannel::ECC_Visibility))
 		{
-			Hit = HitResult.Location;
+			HitLocation = HitResult.Location;
 			return true;
 		}
-		Hit = FVector(0);
+		HitLocation = FVector(0);
 		return true;
 	}
 	return false;
