@@ -23,6 +23,9 @@ private:
 	UPROPERTY(EditAnywhere)
 	float CrossHairYLocation = 0.33333;
 
+	UPROPERTY(EditAnywhere)
+	float LineTraceRange = 1000000;			//Tanks Firing Limit i.e how far can the tank shoot
+
 public :
 	ATankPlayerController();
 	virtual void BeginPlay() override;
