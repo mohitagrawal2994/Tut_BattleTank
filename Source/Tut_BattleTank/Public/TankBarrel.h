@@ -25,7 +25,7 @@ private:
 	float MinElevationDegrees = 5;
 
 public:
-	void Elevate(float DegreesPerSecond);
+	void Elevate(float RelativeSpeed);
 	
 	
 };

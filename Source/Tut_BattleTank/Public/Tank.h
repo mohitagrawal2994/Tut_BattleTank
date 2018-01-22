@@ -7,10 +7,16 @@
 #include "TankAimingComponent.h"
 #include "Tank.generated.h"
 
+class UTankBarrel;
+
 UCLASS()
 class TUT_BATTLETANK_API ATank : public APawn
 {
 	GENERATED_BODY()
+
+private:
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float LaunchSpeed = 100000;
 
 public:
 	// Sets default values for this pawn's properties
@@ -29,8 +35,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void AimAt(FVector HitLocation);
+	void AimAt(FVector HitLocation, LaunchSpeed);
 
 	UFUNCTION(BlueprintCallable, Category = Setup)
-	void SetBarrelReference(UStaticMeshComponent* BarrelToSet);
+	void SetBarrelReference(UTankBarrel BarrelToSet);
 };
