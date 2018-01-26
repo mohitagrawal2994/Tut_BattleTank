@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TankBarrel.h"
+#include "TankTurret.h"
 #include "TankAimingComponent.generated.h"
 
 
@@ -18,6 +19,7 @@ public:
 	UTankAimingComponent();
 
 	UTankBarrel* Barrel = nullptr;
+	UTankTurret* Turret = nullptr;
 
 protected:
 	// Called when the game starts
@@ -30,6 +32,8 @@ public:
 	void AimAt(FVector HitLocation, float LaunchSpeed);
 
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+
+	void SetTurretReference(UTankTurret* TurretToSet);
 
 	void MoveBarrelTowards(FVector AimDirection);
 };
