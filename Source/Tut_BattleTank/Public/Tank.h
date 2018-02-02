@@ -20,6 +20,11 @@ private:
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 100000;
 
+	UPROPERTY(EditAnywhere, Category = Firing)
+	float ReloadTimeinSeconds = 3;
+
+	double LastFireTime = 0;
+
 	UPROPERTY(EditAnywhere, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 
